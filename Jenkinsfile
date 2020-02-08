@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        echo 'This is the Build Stage, changed by tyao'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'This is the Build Stage, changed by tyao'
+          }
+        }
+
+        stage('Build2') {
+          steps {
+            echo 'This is Build2 Message'
+          }
+        }
+
       }
     }
 
